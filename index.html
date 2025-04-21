@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bestellapp</title>
+    <link rel="stylesheet" href="./style/icon.css" />
+    <link rel="stylesheet" href="./style/font.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/responsive.css" />
+    <link rel="stylesheet" href="./style/standard.css" />
+    <script src="./scripts/db.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/template.js"></script>
+  </head>
+  <body onload="init()">
+    <header>
+      <div class="logo">
+        <img src="./asset/img/logo1.png" alt="" />
+      </div>
+      <div class="menu">
+        <div class="icon icon-bars"></div>
+      </div>
+    </header>
+    <main>
+      <div class="restaurant-menu">
+        <div class="menu-content">
+          <div class="poster">
+            <img src="./asset/img/header.avif" class="big-image" alt="" />
+            <img src="./asset/img/nodelbox.jpg" class="circle-image" alt="" />
+          </div>
+          <div class="restaurant-info">
+            <h1>Paradis Noodles</h1>
+            <p>Bewertung (4.2 von 5)sternen</p>
+          </div>
+          <div class="category-container">
+            <div class="category" id="menu-category">
+            </div>
+          </div>
+          <div class="food-list-container">
+            <div class="food-list" id="category"></div>
+          </div>
+        </div>
+      </div>
+      <div class="basket">
+        <div class="basket-content">
+          <h2>Warenkorb</h2>
+          <div class="basket-info">
+            <div class="basket-foods">
+              <div class="basket-food">
+                <h3>Pitza Margarita</h3>
+                <div class="basket-food-info">
+                  <div class="count">
+                    <span class="icon icon-minus"></span>
+                    <span>1x</span>
+                    <span class="icon icon-plus"></span>
+                  </div>
+                  <div class="price euro">64,90</div>
+                  <div class="icon icon-trash-o"></div>
+                </div>
+              </div>
+              <div class="basket-food">
+                <h3>Pitza Peperoni</h3>
+                <div class="basket-food-info">
+                  <div class="count">
+                    <span class="icon icon-minus"></span>
+                    <span>11x</span>
+                    <span class="icon icon-plus"></span>
+                  </div>
+                  <div class="price euro">99,90</div>
+                  <div class="icon icon-trash-o"></div>
+                </div>
+              </div>
+              <div class="basket-sum">
+                <table>
+                  <tr>
+                    <td>Zwischensumme</td>
+                    <td class="€">159,99</td>
+                  </tr>
+                  <tr>
+                    <td>Lieferkosten</td>
+                    <td class="euro">5.0</td>
+                  </tr>
+                  <tr>
+                    <td>Gesamt</td>
+                    <td class="euro">164.99</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

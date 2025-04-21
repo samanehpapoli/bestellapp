@@ -1,0 +1,14 @@
+:root{
+  --orang:#ff8000;
+  
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family:'NationalPark', Arial, Helvetica, sans-serif;
+}
+.euro::after{
+  content:'€';
+}

@@ -1,0 +1,236 @@
+/* dar standar.css ek kod neveshtim :root --orang:#ff8000; in range negah midare har vaght 
+khastim az in rang estefade konim var(rang mored nazar) */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--orang);
+  padding: 15px 20px;
+}
+header .logo img {
+  width: 120px;
+}
+/* bar aks kardan rang */
+header .menu .icon {
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+/* calc kol fazae div main ro ke 100 300ke male basket kam mikone har chi mimone miche bare restaurant-menu  */
+main .restaurant-menu {
+  width: calc(100% - 300px);
+  background: #fcfcfc0a;
+}
+.restaurant-menu .menu-content .poster {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 350px;
+  position: relative;
+}
+
+.restaurant-menu .menu-content .poster .big-image {
+  object-fit: cover;
+  width: 100%;
+  height: 350px;
+}
+.restaurant-menu .menu-content .poster .circle-image {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  bottom: -65px;
+  box-shadow: 0px 0px 20px 4px whitesmoke;
+}
+.restaurant-menu .menu-content .restaurant-info {
+  padding: 15px 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  width: calc(100% - 300px);
+}
+.restaurant-info h1 {
+  font-size: 25px;
+}
+.restaurant-info p {
+  font-size: 15px;
+  color: var(--orang);
+}
+.category-container {
+  background: #f9f7f4;
+  display: flex;
+  justify-content: center;
+}
+
+.category {
+  width: 1200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 5px 20px;
+}
+.category::before{
+  content: url(../asset/icon/arrow.png);
+}
+.category a {
+  color: #a0a3a6;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.category a:hover {
+  color: var(--orang);
+}
+.food-list-container {
+  display: flex;
+  justify-content: center;
+}
+
+.food-list {
+  width: 1200px;
+  padding: 0 20px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+.food-list .food-category {
+  width: 100%;
+  margin: 15px 0;
+}
+.food-list .food-category img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+.food-list .food-category h2 {
+  padding-left: 20px;
+  font-size: 22px;
+}
+.food-list .foods {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+}
+.food-list .foods .food {
+  padding: 13px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  background: white;
+  box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 15%);
+  border-radius: 15px;
+}
+.food-list .foods .food:hover {
+  background: #f5f5f5;
+}
+.food-list .foods .food h2 {
+  font-weight: bold;
+  font-size: 18px;
+}
+.food-list .foods .food span {
+  color: var(--orang);
+}
+.food-list .foods .food div {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-left: solid 1px #f1e9d7;
+  border-bottom: solid 1px #f1e9d7;
+  padding: 10px 10px 3px;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--orang);
+  border-radius: 0 15px 0 15px;
+  background: white;
+  transition: all 0.1s ease;
+}
+.food-list .foods .food div:hover {
+  font-size: 17px;
+}
+
+/* Basket */
+main .basket {
+  width: 300px;
+}
+.basket .basket-content {
+  position: sticky;
+  top: 10px;
+  height: 400px;
+}
+.basket-content h2 {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: solid 1 px #f1f1f1;
+}
+.basket-content .basket-info {
+  padding: 10px 20px;
+}
+.basket-foods .basket-food h3 {
+  font-size: 15px;
+  color: #4c4c4c;
+}
+.basket-food .basket-food-info {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #6c6b6b;
+}
+.basket-food .basket-food-info .icon {
+  color: var(--orang);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.basket-food .basket-food-info .icon:hover {
+  color: #dd7800;
+}
+.basket-food .basket-food-info .icon::before {
+  vertical-align: sub;
+}
+.basket-food .basket-food-info .count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90px;
+}
+.basket-food .basket-food-info .count,
+.basket-food .basket-food-info .price {
+  font-size: 14px;
+}
+.basket-food .basket-sum {
+  border-top: #f1f1f1;
+  padding-top: 5px;
+}
+.basket-sum table{
+  width: 100%;
+}
+.basket-sum table tr {
+  color: #6c6b6b;
+}
+.basket-sum table tr td {
+  padding-bottom: 5px;
+}
+.basket-sum table tr:last-child{
+  color: black;
+  font-weight: bold;
+}
+.basket-sum table tr td:last-child{
+  text-align: right;
+}

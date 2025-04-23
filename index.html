@@ -46,44 +46,20 @@
         <div class="basket-content">
           <h2>Warenkorb</h2>
           <div class="basket-info">
-            <div class="basket-foods">
-              <div class="basket-food">
-                <h3>Pitza Margarita</h3>
-                <div class="basket-food-info">
-                  <div class="count">
-                    <span class="icon icon-minus"></span>
-                    <span>1x</span>
-                    <span class="icon icon-plus"></span>
-                  </div>
-                  <div class="price euro">64,90</div>
-                  <div class="icon icon-trash-o"></div>
-                </div>
-              </div>
-              <div class="basket-food">
-                <h3>Pitza Peperoni</h3>
-                <div class="basket-food-info">
-                  <div class="count">
-                    <span class="icon icon-minus"></span>
-                    <span>11x</span>
-                    <span class="icon icon-plus"></span>
-                  </div>
-                  <div class="price euro">99,90</div>
-                  <div class="icon icon-trash-o"></div>
-                </div>
-              </div>
+            <div class="basket-foods" id="basket-foods"></div>
               <div class="basket-sum">
                 <table>
                   <tr>
                     <td>Zwischensumme</td>
-                    <td class="€">159,99</td>
+                    <td class="€" id="sumPrice">0.0</td>
                   </tr>
                   <tr>
                     <td>Lieferkosten</td>
-                    <td class="euro">5.0</td>
+                    <td class="euro" id="deliveryCost">0.0</td>
                   </tr>
                   <tr>
                     <td>Gesamt</td>
-                    <td class="euro">164.99</td>
+                    <td class="euro" id="totalPrice">0.00</td>
                   </tr>
                 </table>
               </div>

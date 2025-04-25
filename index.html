@@ -42,7 +42,7 @@
         </div>
       </section>
       <section class="basket-button-section">
-       <div class="basket-button">
+       <div class="basket-button" onclick="showBasketInfo()">
         <div class="basket-count icon icon-shopping-cart">
           <span>2</span>
         </div>
@@ -50,9 +50,10 @@
         <div class="basket-price euro">12.99</div>
        </div>
       </section>
-      <aside>
+      <aside id="side-menu">
         <div class="basket-content">
           <h2>Warenkorb</h2>
+          <div class="icon icon-times" onclick="hideBasketInfo()"></div>
           <div class="empty-basket" id="empty-basket">
             <div class="icon icon-shopping-cart"></div>
             <h3>Fülle deinen Warenkorb</h3>

@@ -1,23 +1,40 @@
-@media (max-width:1100px) {
-    main aside{
-      display: none;   
-    }
-    main .basket-button-section{
-        display: flex;
-    }
-    main .restaurant-menu {
-        width: 100%;
-    }
-    footer{
-        margin-bottom: 90px;
-    }
-}
-@media (max-width:600px) {
-    .restaurant-menu .menu-content .poster .circle-image {
-        bottom: 90px;
-    }
-    .restaurant-menu .menu-content .poster .big-image {
-        filter: blur(3px);
-    }
+@media (max-width: 1100px) {
+  main aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 10000px;
+    background: white;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+  }
+  main aside.show {
+    bottom: 0;
+    opacity: 1;
+    z-index: 1;
+  }
+  .basket-content .icon.icon-times{
+    display: block;
 
+  }
+  main .basket-button-section {
+    display: flex;
+  }
+  main .restaurant-menu {
+    width: 100%;
+  }
+  footer {
+    margin-bottom: 90px;
+  }
+}
+@media (max-width: 600px) {
+  .restaurant-menu .menu-content .poster .circle-image {
+    bottom: 90px;
+  }
+  .restaurant-menu .menu-content .poster .big-image {
+    filter: blur(3px);
+  }
 }

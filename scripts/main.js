@@ -134,3 +134,10 @@ function calculateSum() {
     sumPrice + DELIVERY_COST
   ).toFixed(2);
 }
+function showBasketInfo(){
+document.getElementById("side-menu").classList.add("show");
+}
+function hideBasketInfo() {
+  document.getElementById("side-menu").classList.remove("show")
+  
+}

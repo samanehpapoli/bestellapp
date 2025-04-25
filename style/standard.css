@@ -1,5 +1,5 @@
 :root{
-  --orang:#ff8000;
+  --orang:#f36805;
   
 }
 
@@ -11,4 +11,7 @@
 }
 .euro::after{
   content:'€';
+}
+.d-none {
+  display: none !important;
 }

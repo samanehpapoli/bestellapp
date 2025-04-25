@@ -1,0 +1,23 @@
+@media (max-width:1100px) {
+    main aside{
+      display: none;   
+    }
+    main .basket-button-section{
+        display: flex;
+    }
+    main .restaurant-menu {
+        width: 100%;
+    }
+    footer{
+        margin-bottom: 90px;
+    }
+}
+@media (max-width:600px) {
+    .restaurant-menu .menu-content .poster .circle-image {
+        bottom: 90px;
+    }
+    .restaurant-menu .menu-content .poster .big-image {
+        filter: blur(3px);
+    }
+
+}

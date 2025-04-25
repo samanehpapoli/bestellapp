@@ -23,7 +23,7 @@ main {
 }
 /* calc kol fazae div main ro ke 100 300ke male basket kam mikone har chi mimone miche bare restaurant-menu  */
 main .restaurant-menu {
-  width: calc(100% - 300px);
+  width: calc(100% - 344px);
   background: #fcfcfc0a;
 }
 .restaurant-menu .menu-content .poster {
@@ -78,7 +78,7 @@ main .restaurant-menu {
   gap: 20px;
   padding: 5px 20px;
 }
-.category::before{
+.category::before {
   content: url(../asset/icon/arrow.png);
 }
 .category a {
@@ -163,10 +163,59 @@ main .restaurant-menu {
 .food-list .foods .food div:hover {
   font-size: 17px;
 }
+/*Basket button section*/
+main .basket-button-section {
+  display: none;
+  position: fixed;
+  background: white;
+  width: 100%;
+  bottom: 0;
+  justify-content: center;
+  padding: 15px;
+  box-shadow: 0px 5px 11px 1px #aeaeae;
+}
+.basket-button-section .basket-button {
+  width: 94%;
+  background: var(--orang);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.basket-button-section .basket-button:hover {
+  filter: brightness(0.95);
+}
+.basket-button-section .basket-count {
+  font-family: 22px;
+  position: relative;
+}
+.basket-button-section .basket-count span {
+  position: absolute;
+  font-size: 11px;
+  background: black;
+  border-radius: 50%;
+  padding: 0px 4px;
+  right: -8px;
+  top: -4px;
+}
+.basket-button-section .basket-title {
+  font-size: 22px;
+}
+.basket-button-section .basket-price {
+  font-size: 22px;
+}
 
 /* Basket */
-main .basket {
-  width: 300px;
+main aside {
+  width: 344px;
+  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.02),
+    0px 2px 12px -2px rgba(0, 0, 0, 0.08), 0px 3px 4px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.02),
+    0px 2px 12px -2px rgba(0, 0, 0, 0.08), 0px 3px 4px 0px rgba(0, 0, 0, 0.6);
 }
 .basket .basket-content {
   position: sticky;
@@ -178,6 +227,23 @@ main .basket {
   padding: 20px 0;
   border-bottom: solid 1 px #f1f1f1;
 }
+.basket-content .empty-basket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 20px;
+  text-align: center;
+}
+.empty-basket .icon {
+  font-size: 40px;
+}
+
+.empty-basket h3 {
+  font-size: 22px;
+  margin: 10px 0 5px;
+}
+
 .basket-content .basket-info {
   padding: 10px 20px;
 }
@@ -218,7 +284,7 @@ main .basket {
   border-top: #f1f1f1;
   padding-top: 5px;
 }
-.basket-sum table{
+.basket-sum table {
   width: 100%;
 }
 .basket-sum table tr {
@@ -227,10 +293,25 @@ main .basket {
 .basket-sum table tr td {
   padding-bottom: 5px;
 }
-.basket-sum table tr:last-child{
+.basket-sum table tr:last-child {
   color: black;
   font-weight: bold;
 }
-.basket-sum table tr td:last-child{
+.basket-sum table tr td:last-child {
   text-align: right;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #efedea;
+}
+.footer_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 30px 0;
+  font-weight: 300px;
+  font-size: 1rem;
 }

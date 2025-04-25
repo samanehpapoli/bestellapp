@@ -34,6 +34,12 @@ function renderFoods(index) {
   }
 }
 
+/**
+ * Adds a food item to the basket based on category and food index.
+ * If the item already exists, increases its quantity.
+ * Otherwise, adds it as a new item to the basket.
+ * Then re-renders the basket.
+ */
 function addToBasket(categoryIndex, foodIndex) {
   let food = categories[categoryIndex].foods[foodIndex];
   let findBasketIndex = baskets.findIndex(
@@ -56,6 +62,11 @@ function increaseBasket(index) {
   renedrBasket();
 }
 
+/**
+ * Decreases the quantity of a basket item by one.
+ * If the count reaches 1, removes the item from the basket.
+ * Then re-renders the basket.
+ */
 function decreaseBasket(index) {
   if (baskets[index].count === 1) {
     deleteFromBasket(index);
@@ -66,12 +77,22 @@ function decreaseBasket(index) {
   renedrBasket();
 }
 
+/**
+ * Removes an item from the basket by index and re-renders the basket.
+ */
+
 function deleteFromBasket(index) {
   baskets.splice(index, 1);
   renedrBasket();
 }
 
+/**
+ * Renders the basket content in the DOM.
+ * Updates visibility, generates item templates, and recalculates the total price.
+ */
+
 function renedrBasket() {
+  changeBasketVisibility()
   let basketFoodsElement = document.getElementById("basket-foods");
   basketFoodsElement.innerHTML = "";
   for (let i = 0; i < baskets.length; i++) {
@@ -80,11 +101,32 @@ function renedrBasket() {
   calculateSum();
 }
 
+/**
+ * Toggles the visibility of basket elements based on whether the basket has items.
+ * Shows basket info if not empty; otherwise, shows the empty basket message.
+ */
+function changeBasketVisibility() {
+  if (baskets.length> 0) {
+    document.getElementById("empty-basket").classList.add("d-none");
+    document.getElementById("basket-info").classList.remove("d-none");
+  }
+  else{
+    document.getElementById("empty-basket").classList.remove("d-none");
+    document.getElementById("basket-info").classList.add("d-none")
+  } 
+}
+
+/**
+ * Calculates the total price of all items in the basket.
+ * Updates the DOM with the sum of item prices, delivery cost, and total cost.
+ */
+
 function calculateSum() {
   let sumPrice = 0;
   for (let i = 0; i < baskets.length; i++) {
     sumPrice += baskets[i].count * baskets[i].price;
   }
+  // Rounds the total sum to 2 decimal places and ensures it's a number
   sumPrice = parseFloat(sumPrice.toFixed(2));
   document.getElementById("sumPrice").innerHTML = sumPrice;
   document.getElementById("deliveryCost").innerHTML = DELIVERY_COST;

@@ -1,11 +1,14 @@
 
+/**
+ * Generates an HTML link for a food category.
+ * The link points to a specific category section by its index.*/
 function getMenuTemplate(categoryIndex){
     return `<a href="#food-category-${categoryIndex}">${categories[categoryIndex].name}</a>`
    }
 
 function getCategoryTemplate(index) {
   let category = categories[index] 
-  return ` <div class="food-category" id="food-category-${index}">
+  return ` <div class="food-category">
                 <img src="./asset/img/${category.image}" alt="">
                 <h2>${category.name}</h2>
                 </div>
@@ -14,7 +17,7 @@ function getCategoryTemplate(index) {
 
 function getFoodTemplate(categoryIndex, foodIndex) {
   let food = categories[categoryIndex].foods[foodIndex]
-  return ` <div class="food">
+  return ` <div class="food" id="food-${categoryIndex}-${foodIndex}">
                 <h2>${food.name}</h2>
                 <p>${food.description}</p>
                 <span class="euro">${food.price}</span>

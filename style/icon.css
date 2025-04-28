@@ -61,4 +61,8 @@
 .icon-times:before {
   content: "\69";
 }
+.icon-star:before {
+  content: "\6a";
+}
+
 

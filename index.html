@@ -25,30 +25,43 @@
     <main>
       <section class="restaurant-menu">
         <div class="menu-content">
-          <div class="poster">
-            <img src="./asset/img/header.avif" class="big-image" alt="" />
-            <img src="./asset/img/nodelbox.jpg" class="circle-image" alt="" />
-          </div>
-          <div class="restaurant-info">
-            <h1>Paradis Noodles</h1>
-            <p>Bewertung (4.2 von 5)sternen</p>
-          </div>
-          <div class="category-container">
-            <div class="category" id="menu-category"></div>
-          </div>
+              <div class="poster">
+                <img src="./asset/img/header.avif" class="big-image" alt="" />
+                <img src="./asset/img/nodelbox.jpg" class="circle-image" alt="" />
+              </div>
+              <div class="restaurant-info">
+                <h1>Paradis Noodles</h1>
+                <div class="restaurant-details">
+                  <div class="star-info">
+                    <span class="icon icon-star"></span>4.4</div>
+                  <div class="price-info">
+                   <span class="icon icon-bag"></span>Min. <span class="euro" id="min-order-price"></span>
+                  </div>
+                  <div class="delivery-info">
+                    <span class="icon icon-motorcycle"></span><span class="euro" id="delivery-cost"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="category-container">
+                <div class="category" id="menu-category"></div>
+              </div>
+              <div class="search-container">
+                <input type="text" id="searchBox" placeholder="Search ..." class="searchBox" onkeyup="filterFoods()"  />
+              </div>
+        </div>
           <div class="food-list-container">
             <div class="food-list" id="category"></div>
           </div>
         </div>
       </section>
-      <section class="basket-button-section">
-       <div class="basket-button" onclick="showBasketInfo()">
-        <div class="basket-count icon icon-shopping-cart">
-          <span>2</span>
-        </div>
-        <div class="basket-title">Warenkorb ansehen</div>
-        <div class="basket-price euro">12.99</div>
-       </div>
+      <section class="basket-button-section d-none" id="basket-button-section">
+            <div class="basket-button" onclick="showBasketInfo()">
+              <div class="basket-count icon icon-shopping-cart">
+                <span id="foods-total-count">2</span>
+              </div>
+              <div class="basket-title">Warenkorb ansehen</div>
+              <div class="basket-price euro" id="total-price-in-button"></div>
+            </div>
       </section>
       <aside id="side-menu">
         <div class="basket-content">
@@ -80,10 +93,12 @@
                 </tr>
               </table>
             </div>
+            <div class="basket-checkout disable">
+              Bezahlen (<span id="totalPrice-checkout" class="euro"></span>)
+            </div>
           </div>
         </div>
       </aside>
-
     </main>
     <footer>
       <div class="footer_container">

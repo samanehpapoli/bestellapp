@@ -199,13 +199,20 @@ function caculateTotalFoodCount() {
   document.getElementById("foods-total-count").innerHTML = totalFoodCount;
 }
 
-// function checkMinBasketPrice(totalPrice) {
-//   console.log(totalPrice);
-// }
+function checkMinBasketPrice(totalPrice) {
+ let bascketCheckoutButtonElement = document.getElementById("basket-checkout-button")
+  if (totalPrice >= MIN_ORDER_PRICE) {
+   bascketCheckoutButtonElement.classList.remove("disable");
+   bascketCheckoutButtonElement.setAttribute("onclick",'checkoutBasket()')
+  } else {
+   bascketCheckoutButtonElement.classList.add('disable');
+   bascketCheckoutButtonElement.removeAttribute("onclick",'checkoutBasket()')
+  }
+}
 
-// function checkoutBasket() {
-//   console.log(" check");
-// }
+function checkoutBasket() {
+  console.log("checkout basket");
+}
 
 function saveTolocalStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));

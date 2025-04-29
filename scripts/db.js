@@ -63,6 +63,15 @@ let categories = [
         name: "Pasta Cheesy",
         price: 9.99,
         description: "mit 3 Käsesorten",
+      }, {
+        name: "Pasta Alferdo",
+        price: 16.99,
+        description: "mit Hähnchen, Champignons und Sahnesauce",
+      },
+      {
+        name: "Pasta Pesto",
+        price: 8.99,
+        description: "mit 3 Käsesorten",
       },
     ],
   },

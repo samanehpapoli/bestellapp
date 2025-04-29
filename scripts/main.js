@@ -211,7 +211,22 @@ function checkMinBasketPrice(totalPrice) {
 }
 
 function checkoutBasket() {
-  console.log("checkout basket");
+  saveTolocalStorage('bestellAppRecipe',baskets);
+  baskets = [];
+  renedrBasket();
+  removeFromLocalStorage('bestellAppBasket');
+  document.getElementById('overlay').classList.remove('d-none');
+  let recipeFoodsElement = document.getElementById('recipe-foods');
+  recipeFoodsElement.innerHTML ='';
+  let recipeFoods = getFromLocalStorage('bestellAppRecipe');
+  recipeFoods.forEach(food => {
+    let totalPrice = (food.price * food.count).toFixed(2);
+    recipeFoodsElement.innerHTML += ` <tr>
+                                          <td>${food.count}</td>
+                                          <td>${food.name}</td>
+                                          <td class="euro">${totalPrice}</td>
+                                       </tr>`
+ });
 }
 
 function saveTolocalStorage(key, value) {
@@ -224,4 +239,8 @@ function getFromLocalStorage(key) {
   } else {
     return JSON.parse(localStorage.getItem(key));
   }
+}
+
+function removeFromLocalStorage(key) {
+ localStorage.removeItem(key) ;
 }

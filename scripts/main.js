@@ -1,6 +1,8 @@
 const DELIVERY_COST = 4.99;
 const MIN_ORDER_PRICE = 29.99;
 let baskets = [];
+let hideFoods = 0;
+
 function init() {
   InitializeStaticItems();
   renderMenuCategory();
@@ -106,7 +108,7 @@ function renedrBasket() {
   for (let i = 0; i < baskets.length; i++) {
     basketFoodsElement.innerHTML += getBasketTemplate(i);
   }
-  calculateSum();
+  renderTotalBasket();
   caculateTotalFoodCount();
   saveTolocalStorage("bestellAppBasket", baskets);
 }
@@ -121,10 +123,12 @@ function changeBasketVisibility() {
     document.getElementById("empty-basket").classList.add("d-none");
     document.getElementById("basket-info").classList.remove("d-none");
     document.getElementById("basket-button-section").classList.remove("d-none");
+    document.getElementById("footer").classList.add("up");
   } else {
     document.getElementById("empty-basket").classList.remove("d-none");
     document.getElementById("basket-info").classList.add("d-none");
     document.getElementById("basket-button-section").classList.add("d-none");
+    document.getElementById("footer").classList.remove("up");
   }
 }
 
@@ -132,22 +136,23 @@ function changeBasketVisibility() {
  * Calculates the total price of all items in the basket.
  * Updates the DOM with the sum of item prices, delivery cost, and total cost.
  */
-
-function calculateSum() {
-  let sumPrice = 0;
-  for (let i = 0; i < baskets.length; i++) {
-    sumPrice += baskets[i].count * baskets[i].price;
-  }
-  // Rounds the total sum to 2 decimal places and ensures it's a number
-  // parseFloat(...) converts the string back to a float number.
-  sumPrice = parseFloat(sumPrice.toFixed(2));
-  let totalPrice = parseFloat((sumPrice + DELIVERY_COST).toFixed(2));
-  document.getElementById("sumPrice").innerHTML = sumPrice;
-  document.getElementById("deliveryCost").innerHTML = DELIVERY_COST;
-  document.getElementById("totalPrice").innerHTML = totalPrice;
+function renderTotalBasket() {
+  let sum = calculateSum(baskets);
+  let totalPrice = parseFloat((sum + DELIVERY_COST).toFixed(2));
+  document.getElementById("basket-total").innerHTML = getTotalTemplate(sum, totalPrice);
   document.getElementById("totalPrice-checkout").innerHTML = totalPrice;
   document.getElementById("total-price-in-button").innerHTML = totalPrice;
   checkMinBasketPrice(totalPrice);
+}
+
+function calculateSum(foods) {
+  let sum = 0;
+  foods.forEach((food) => {
+    sum += food.count * food.price;
+  });
+  // Rounds the total sum to 2 decimal places and ensures it's a number
+  // parseFloat(...) converts the string back to a float number.
+  return parseFloat(sum.toFixed(2));
 }
 
 function showBasketInfo() {
@@ -160,25 +165,33 @@ function hideBasketInfo() {
 /**kkhodam */
 
 function filterFoods() {
+  categories.forEach((category, i) => {
+    category.foods.forEach((food, j) => {
+      checkFoodFilter(i, j, food);
+    });
+    checkCategoryFilter(i, category);
+    hideFoods = 0;
+  });
+}
+
+function checkFoodFilter(i, j, food) {
   let searchText = document.getElementById("searchBox").value.toLowerCase().trim();
-
-  for (let i = 0; i < categories.length; i++) {
-    let category = categories[i];
-
-    for (let j = 0; j < category.foods.length; j++) {
-      let food = category.foods[j];
-      let foodElement = document.getElementById(`food-${i}-${j}`);
-
-      if (foodElement) {
-        if (food.name.toLowerCase().includes(searchText)) {
-          // foodElement.classList.add("green");
-          foodElement.classList.remove("d-none");
-        } else {
-          // foodElement.classList.remove("green");
-          foodElement.classList.add("d-none");
-        }
-      }
+  let foodElement = document.getElementById(`food-${i}-${j}`);
+  if (foodElement) {
+    if (food.name.toLowerCase().includes(searchText)) {
+      foodElement.classList.remove("d-none");
+    } else {
+      foodElement.classList.add("d-none");
+      hideFoods++;
     }
+  }
+}
+
+function checkCategoryFilter(i, category) {
+  if (hideFoods === category.foods.length) {
+    document.getElementById(`category-${i}`).classList.add("d-none");
+  } else {
+    document.getElementById(`category-${i}`).classList.remove("d-none");
   }
 }
 
@@ -200,33 +213,45 @@ function caculateTotalFoodCount() {
 }
 
 function checkMinBasketPrice(totalPrice) {
- let bascketCheckoutButtonElement = document.getElementById("basket-checkout-button")
+  let bascketCheckoutButtonElement = document.getElementById("basket-checkout-button");
   if (totalPrice >= MIN_ORDER_PRICE) {
-   bascketCheckoutButtonElement.classList.remove("disable");
-   bascketCheckoutButtonElement.setAttribute("onclick",'checkoutBasket()')
+    bascketCheckoutButtonElement.classList.remove("disable");
+    bascketCheckoutButtonElement.setAttribute("onclick", "checkoutBasket()");
   } else {
-   bascketCheckoutButtonElement.classList.add('disable');
-   bascketCheckoutButtonElement.removeAttribute("onclick",'checkoutBasket()')
+    bascketCheckoutButtonElement.classList.add("disable");
+    bascketCheckoutButtonElement.removeAttribute("onclick", "checkoutBasket()");
   }
 }
 
 function checkoutBasket() {
-  saveTolocalStorage('bestellAppRecipe',baskets);
+  saveTolocalStorage("bestellAppRecipe", baskets);
   baskets = [];
   renedrBasket();
-  removeFromLocalStorage('bestellAppBasket');
-  document.getElementById('overlay').classList.remove('d-none');
-  let recipeFoodsElement = document.getElementById('recipe-foods');
-  recipeFoodsElement.innerHTML ='';
-  let recipeFoods = getFromLocalStorage('bestellAppRecipe');
-  recipeFoods.forEach(food => {
-    let totalPrice = (food.price * food.count).toFixed(2);
-    recipeFoodsElement.innerHTML += ` <tr>
-                                          <td>${food.count}</td>
-                                          <td>${food.name}</td>
-                                          <td class="euro">${totalPrice}</td>
-                                       </tr>`
- });
+  removeFromLocalStorage("bestellAppBasket");
+  document.getElementById("overlay").classList.remove("d-none");
+  document.getElementById("side-menu").classList.remove("show");
+  let recipeFoods = getFromLocalStorage("bestellAppRecipe");
+  renderFoodRecipe(recipeFoods);
+  renderTotalRecipe(recipeFoods);
+}
+
+function renderFoodRecipe(recipeFoods) {
+  let recipeFoodsElement = document.getElementById("recipe-foods");
+  recipeFoodsElement.innerHTML = "";
+  recipeFoods.forEach((food) => {
+    recipeFoodsElement.innerHTML += getRecipeFoodTemplate(food);
+  });
+}
+
+function renderTotalRecipe(recipeFoods) {
+  let sum = calculateSum(recipeFoods);
+  let totalPrice = parseFloat((sum + DELIVERY_COST).toFixed(2));
+  document.getElementById("recipe-total").innerHTML = getTotalTemplate(sum, totalPrice);
+}
+
+function closeRecipe() {
+  document.getElementById("overlay").classList.add("d-none");
+  removeFromLocalStorage("bestellAppRecipe");
 }
 
 function saveTolocalStorage(key, value) {
@@ -242,5 +267,5 @@ function getFromLocalStorage(key) {
 }
 
 function removeFromLocalStorage(key) {
- localStorage.removeItem(key) ;
+  localStorage.removeItem(key);
 }

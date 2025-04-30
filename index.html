@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bestellapp</title>
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./style/icon.css" />
     <link rel="stylesheet" href="./style/font.css" />
     <link rel="stylesheet" href="./style/main.css" />
@@ -25,43 +26,38 @@
     <main>
       <section class="restaurant-menu">
         <div class="menu-content">
-              <div class="poster">
-                <img src="./asset/img/header.avif" class="big-image" alt="" />
-                <img src="./asset/img/nodelbox.jpg" class="circle-image" alt="" />
-              </div>
-              <div class="restaurant-info">
-                <h1>Paradis Noodles</h1>
-                <div class="restaurant-details">
-                  <div class="star-info">
-                    <span class="icon icon-star"></span>4.4</div>
-                  <div class="price-info">
-                   <span class="icon icon-bag"></span>Min. <span class="euro" id="min-order-price"></span>
-                  </div>
-                  <div class="delivery-info">
-                    <span class="icon icon-motorcycle"></span><span class="euro" id="delivery-cost"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="category-container">
-                <div class="category" id="menu-category"></div>
-              </div>
-              <div class="search-container">
-                <input type="text" id="searchBox" placeholder="Search ..." class="searchBox" onkeyup="filterFoods()"  />
-              </div>
-        </div>
+          <div class="poster">
+            <img src="./asset/img/header.avif" class="big-image" alt="" />
+            <img src="./asset/img/nodelbox.jpg" class="circle-image" alt="" />
+          </div>
+          <div class="restaurant-info">
+            <h1>Paradis Noodles</h1>
+            <div class="restaurant-details">
+              <div class="star-info"><span class="icon icon-star"></span>4.4</div>
+              <div class="price-info"><span class="icon icon-bag"></span>Min. <span class="euro" id="min-order-price"></span></div>
+              <div class="delivery-info"><span class="icon icon-motorcycle"></span><span class="euro" id="delivery-cost"></span></div>
+            </div>
+          </div>
+          <div class="category-container">
+            <div class="category" id="menu-category"></div>
+          </div>
+          <div class="search-container">
+            <input type="text" id="searchBox" placeholder="Search ..." class="searchBox" onkeyup="filterFoods()" />
+          </div>
           <div class="food-list-container">
             <div class="food-list" id="category"></div>
           </div>
         </div>
+        
       </section>
       <section class="basket-button-section d-none" id="basket-button-section">
-            <div class="basket-button" onclick="showBasketInfo()">
-              <div class="basket-count icon icon-shopping-cart">
-                <span id="foods-total-count">2</span>
-              </div>
-              <div class="basket-title">Warenkorb ansehen</div>
-              <div class="basket-price euro" id="total-price-in-button"></div>
-            </div>
+        <div class="basket-button" onclick="showBasketInfo()">
+          <div class="basket-count icon icon-shopping-cart">
+            <span id="foods-total-count">2</span>
+          </div>
+          <div class="basket-title">Warenkorb</div>
+          <div class="basket-price euro" id="total-price-in-button"></div>
+        </div>
       </section>
       <aside id="side-menu">
         <div class="basket-content">
@@ -70,28 +66,12 @@
           <div class="empty-basket" id="empty-basket">
             <div class="icon icon-shopping-cart"></div>
             <h3>Fülle deinen Warenkorb</h3>
-            <p>
-              Füge einige leckere Gerichte aus der Speisekarte hinzu und
-              bestelle dein Essen.
-            </p>
+            <p>Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
           </div>
           <div class="basket-info d-none" id="basket-info">
             <div class="basket-foods" id="basket-foods"></div>
             <div class="basket-sum">
-              <table>
-                <tr>
-                  <td>Zwischensumme</td>
-                  <td class="€" id="sumPrice">0.0</td>
-                </tr>
-                <tr>
-                  <td>Lieferkosten</td>
-                  <td class="euro" id="deliveryCost">0.0</td>
-                </tr>
-                <tr>
-                  <td>Gesamt</td>
-                  <td class="euro" id="totalPrice">0.00</td>
-                </tr>
-              </table>
+              <table id="basket-total"></table>
             </div>
             <div class="basket-checkout disable" id="basket-checkout-button">
               Bezahlen (<span id="totalPrice-checkout" class="euro"></span>)
@@ -99,45 +79,21 @@
           </div>
         </div>
       </aside>
-      <section class="overlay d-none" id="overlay"> 
-       <div class="overlay-container">
-            <img src="./asset/icon/check.png" alt="okey">
-            <h2>Einkauf war erfolgreich</h2>
-            <table class="foods" id="recipe-foods">
-                  <tr>
-                    <td>2</td>
-                    <td>Pizza Peperoni</td>
-                    <td class="euro" >12.99</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Pizza test</td>
-                    <td class="euro">15.99</td>
-                  </tr>
-            </table>
-            <table class="total">
-                  <tr>
-                    <td>Zwischensumme</td>
-                    <td class="euro">0.0</td>
-                  </tr>
-                  <tr>
-                    <td>Lieferkosten</td>
-                    <td class="euro">0.0</td>
-                  </tr>
-                  <tr>
-                    <td>Gesamt</td>
-                    <td class="euro">0.0</td>
-                  </tr>
-            </table>
-            <div class="close-button">Schlisßen Sie das Rezept</div>
-       </div>
+      <section class="overlay d-none" id="overlay">
+        <div class="overlay-container">
+          <img src="./asset/icon/check.png" alt="okey" />
+          <h2>Einkauf war erfolgreich</h2>
+          <table class="foods" id="recipe-foods"></table>
+          <table class="total" id="recipe-total"></table>
+          <div class="close-button" onclick="closeRecipe()">Schlisßen Sie das Rezept</div>
+        </div>
       </section>
     </main>
-    <footer>
+    <footer id="footer">
       <div class="footer_container">
-          <p>Created by Samaneh Papoli</p>
-          <p>&copy; Copyright 2025 · All rights reserved</p>
+        <p>Created by Samaneh Papoli</p>
+        <p>&copy; Copyright 2025 · All rights reserved</p>
       </div>
-  </footer>
+    </footer>
   </body>
 </html>

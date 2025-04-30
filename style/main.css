@@ -55,7 +55,6 @@ main .restaurant-menu {
   flex-direction: column;
   gap: 15px;
   position: relative;
-  width: calc(100% - 300px);
 }
 .restaurant-info h1 {
   font-size: 25px;
@@ -111,13 +110,14 @@ main .restaurant-menu {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 }
 
 input.searchBox {
-  width: 100%;
-  height: 100%;
+  width: 1160px;
   border: none;
-  padding: 20px 40px;
+  padding: 20px 20px;
+  margin: 0 20px;
   font-size: 16px;
   outline: none;
   border-radius: 8px;
@@ -222,6 +222,7 @@ main .basket-button-section {
   border-radius: 50rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin: 0 15px;
 }
 .basket-button-section .basket-button:hover {
   filter: brightness(0.95);
@@ -249,8 +250,8 @@ main .basket-button-section {
 /* Basket */
 main aside {
   width: 344px;
-  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.02), 0px 2px 12px -2px rgba(0, 0, 0, 0.08), 0px 3px 4px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.02), 0px 2px 12px -2px rgba(0, 0, 0, 0.08), 0px 3px 4px 0px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.02), 0px 2px 12px -2px rgba(0, 0, 0, 0.08), 0px 3px 6px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.02), 0px 2px 12px -2px rgba(0, 0, 0, 0.08), 0px 3px 6px 0px rgba(0, 0, 0, 0.06);
 }
 .basket-content {
   position: sticky;
@@ -395,6 +396,7 @@ main aside {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 .overlay .overlay-container {
   background: white;
@@ -403,6 +405,7 @@ main aside {
   align-items: center;
   padding: 20px;
   border-radius: 10px;
+  margin: 0 10px;
 }
 .overlay-container img {
   width: 70px;
@@ -410,6 +413,7 @@ main aside {
 .overlay-container h2 {
   font-size: 27px;
   margin-bottom: 20px;
+  text-align: center;
 }
 .overlay-container .foods {
   width: 100%;
@@ -429,20 +433,19 @@ main aside {
 }
 .overlay-container .total tr td:last-child {
   text-align: right;
-} 
+}
 .overlay-container .close-button {
   margin-top: 100px;
-  background:var(--orang);
+  background: var(--orang);
   padding: 10px 30px;
   border-radius: 50px;
   color: white;
   cursor: pointer;
   transform: all 0.2s ease;
 }
-.overlay-container .close-button:hover{
+.overlay-container .close-button:hover {
   filter: brightness(95%);
 }
-
 
 footer {
   display: flex;

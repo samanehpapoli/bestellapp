@@ -16,9 +16,8 @@
     opacity: 1;
     z-index: 1;
   }
-  .basket-content .icon.icon-times{
+  .basket-content .icon.icon-times {
     display: block;
-
   }
   main .basket-button-section {
     display: flex;
@@ -26,7 +25,7 @@
   main .restaurant-menu {
     width: 100%;
   }
-  footer {
+  footer.up{
     margin-bottom: 90px;
   }
 }
@@ -36,5 +35,18 @@
   }
   .restaurant-menu .menu-content .poster .big-image {
     filter: blur(3px);
+  }
+}
+@media (max-width: 400px) {
+  .restaurant-menu .menu-content .restaurant-info {
+    align-items: center;
+  }
+  .restaurant-info .restaurant-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .overlay-container h2 {
+    font-size: 22px;
+
   }
 }

@@ -5,7 +5,7 @@ let categories = [
     foods: [
       {
         name: "Pizza Margarita",
-        price: 8.0,
+        price: 8.00,
         description: "Contains milk and products thereof (including lactose)",
         count: 0,
       },

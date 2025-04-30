@@ -2,7 +2,7 @@
  * Generates an HTML link for a food category.
  * The link points to a specific category section by its index.*/
 function getMenuTemplate(categoryIndex) {
-  return `<a href="#food-category-${categoryIndex}">${categories[categoryIndex].name}</a>`;
+  return `<a href="#category-${categoryIndex}">${categories[categoryIndex].name}</a>`;
 }
 
 function getCategoryTemplate(index) {

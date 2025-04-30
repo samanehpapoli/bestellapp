@@ -22,6 +22,9 @@
   main .basket-button-section {
     display: flex;
   }
+  main .basket-button-section.d-none {
+    display: none;
+  }
   main .restaurant-menu {
     width: 100%;
   }
